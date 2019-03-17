@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: java-application.local
+    http:
+      paths:
+      - path: /spring-boot-demo
+        backend:
+          serviceName: spring-boot-demo
+          servicePort: 8080

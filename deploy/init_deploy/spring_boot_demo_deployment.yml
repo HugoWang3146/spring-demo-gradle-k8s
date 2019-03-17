@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-demo-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-demo
+  template:
+    metadata:
+      labels:
+        app: spring-boot-demo
+    spec:
+      containers:
+      - name: spring-boot-demo
+        image: docker-registry.local:5000/spring-boot-demo
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: spring-boot-demo
+          mountPath: /var/log/spring-boot-demo
+      volumes:
+      - name: spring-boot-demo
+        hostPath:
+          type: DirectoryOrCreate
+          path: /var/log/spring-boot-demo

@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    platform: postgres
+    username: postgres
+    password: password
+    url: jdbc:postgresql://localhost:5432/postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+    properties.hibernate:
+      temp.use_jdbc_metadata_defaults: false
+
+application:
+  redis:
+    host: localhost
+    port: 6379
+
+logging:
+  file: /var/log/spring-boot-demo/app.log
